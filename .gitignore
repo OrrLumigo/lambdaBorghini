@@ -1,13 +1,4 @@
-# package directories
-./*/jspm_packages
-
-# Serverless directories
-./*/.serverless
-./*/node_modules
+/*/node_modules
 /.idea
-/*/.env
-
-# Ignore serverless manifest files
-/*/serverless.manifest.json
-/*/.serverless/manifest.json
+/*/.serverless/
 /*/.webpackCache/
