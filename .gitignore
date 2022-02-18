@@ -1,0 +1,12 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+/.idea
+.env
+
+# Ignore serverless manifest files
+serverless.manifest.json
+.serverless/manifest.json
