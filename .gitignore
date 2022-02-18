@@ -4,7 +4,7 @@
 # Serverless directories
 ./*/.serverless
 ./*/node_modules
-./*/.idea
+/.idea
 /*/.env
 
 # Ignore serverless manifest files
