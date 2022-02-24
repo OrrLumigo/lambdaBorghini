@@ -1,0 +1,62 @@
+service: lambdaborghini
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  stage: 7-peomise-all
+  environment:
+    USERS_TABLE: !Ref UsersTable
+
+
+custom:
+  region: ${opt:region, self:provider.region}
+  myStage: ${opt:stage, self:provider.stage}
+  base: ${self:service}-${self:custom.myStage}
+  webpack:
+    webpackConfig: "webpack.config.js"
+    packager: "npm"
+    includeModules: false
+  serverless-layers:
+    - common:
+        dependenciesPath: ./package.json
+        layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
+    - appsync:
+        functions:
+          - do-appsync
+        dependenciesPath: /package-appsync.json
+        layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
+
+plugins:
+  - serverless-layers
+  - serverless-webpack
+  - serverless-iam-roles-per-function
+
+functions:
+  write-batch:
+    handler: src/functions/write-batch.handler
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:*"
+        Resource: !GetAtt UsersTable.Arn
+      - Effect: Allow
+        Action: ssm:GetParameter
+        Resource: arn:aws:ssm:*
+
+
+resources:
+  Resources:
+    UsersTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        SSESpecification:
+          SSEEnabled: true
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.base}-users

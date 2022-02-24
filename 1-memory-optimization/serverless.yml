@@ -1,0 +1,20 @@
+service: lambdaborghini
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  stage: 1-memory-optimization
+
+custom:
+  region: ${opt:region, self:provider.region}
+    myStage: ${opt:stage, self:provider.stage}
+  base: ${self:service}-${self:custom.myStage}
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-iam-roles-per-function
+
+functions:
+  cpu-intencive:
+    handler: src/functions/cpu-intencive.handler
