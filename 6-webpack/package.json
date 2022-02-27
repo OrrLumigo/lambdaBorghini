@@ -11,7 +11,11 @@
   "dependencies": {
     "aws-sdk": "^2.1076.0",
     "lodash": "^4.17.21",
-    "middy": "^0.36.0"
+    "middy": "^0.36.0",
+    "jimp": "^0.16.1",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0",
+    "aws-appsync": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -19,7 +23,6 @@
     "babel-loader": "^8.1.0",
     "@babel/preset-env": "^7.12.1",
     "cache-loader": "^4.1.0",
-    "serverless-layers": "^2.3.3",
     "@babel/preset-typescript": "^7.12.1",
     "fork-ts-checker-webpack-plugin": "^5.0.12",
     "babel-plugin-source-map-support": "^2.1.3",
