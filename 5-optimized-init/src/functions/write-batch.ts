@@ -7,7 +7,9 @@ export const handler = async (items) => {
     console.log("items: ", items);
     return promise.then(async (secret)=>{
         if(secret === "top-secret message"){
-            await Promise.all(items.map(async(item)=>DynamoDB.createItem(process.env.USERS_TABLE!,item)));
+            for (const item of items) {
+                await DynamoDB.createItem(process.env.USERS_TABLE!,item)
+            }
             console.log("success")
         } else{
             console.log("bad secret")
