@@ -22,14 +22,6 @@ plugins:
 functions:
   write-batch:
     handler: src/functions/write-batch.handler
-    iamRoleStatements:
-      - Effect: "Allow"
-        Action:
-          - "dynamodb:*"
-        Resource: !GetAtt UsersTable.Arn
-      - Effect: Allow
-        Action: ssm:GetParameter
-        Resource: arn:aws:ssm:*
   do-appsync:
     handler: src/functions/do-appsync.handler
 
