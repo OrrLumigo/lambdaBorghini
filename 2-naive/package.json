@@ -11,12 +11,9 @@
   "dependencies": {
     "aws-sdk": "^2.1076.0",
     "lodash": "^4.17.21",
-    "middy": "^0.36.0",
-    "source-map-support": "^0.5.19",
     "jimp": "^0.16.1",
-    "graphql": "^15.3.0",
-    "graphql-tag": "^2.11.0",
-    "aws-appsync": "^4.0.1"
+    "aws-appsync": "^4.0.1",
+    "source-map-support": "^0.5.19"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

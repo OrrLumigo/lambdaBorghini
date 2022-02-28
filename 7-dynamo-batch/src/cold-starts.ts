@@ -19,17 +19,17 @@ for(let i = 0 ; i < 100 ; i++){
             invokeLambda("lambdaborghini-3-layers-plugin-split-write-batch", payload, "Event"),
             invokeLambda("lambdaborghini-4-optimized-imports-write-batch", payload, "Event"),
             // invokeLambda("lambdaborghini-8-webpack-write-batch", payload, "Event"),
-            invokeLambda("lambdaborghini-5-optimized-init-write-batch", payload, "Event"),
-            invokeLambda("lambdaborghini-6-peomise-all-write-batch", payload, "Event"),
-            invokeLambda("lambdaborghini-7-dynamo-batch-write-batch", payload, "Event")
+            // invokeLambda("lambdaborghini-5-optimized-init-write-batch", payload, "Event"),
+            // invokeLambda("lambdaborghini-6-peomise-all-write-batch", payload, "Event"),
+            // invokeLambda("lambdaborghini-7-dynamo-batch-write-batch", payload, "Event"),
+            invokeLambda("lambdaborghini-8-webpack-write-batch", payload, "Event")
         ]);
-        // await Promise.all([
-        //     updateConf("lambdaborghini-2-naive-write-batch", name, value),
-        //     updateConf("lambdaborghini-3-layers-plugin-split-write-batch", name, value),
-        //     updateConf("lambdaborghini-4-optimized-imports-write-batch", name, value),
-        //     updateConf("lambdaborghini-4-optimized-imports-write-batch", name, value),
-        //     updateConf("lambdaborghini-8-webpack-write-batch", name, value)
-        // ]);
+        await Promise.all([
+            updateConf("lambdaborghini-2-naive-write-batch", name, value),
+            updateConf("lambdaborghini-3-layers-plugin-split-write-batch", name, value),
+            updateConf("lambdaborghini-4-optimized-imports-write-batch", name, value),
+            updateConf("lambdaborghini-8-webpack-write-batch", name, value)
+        ]);
     }
 
 })()

@@ -16,13 +16,9 @@ custom:
   region: ${opt:region, self:provider.region}
   myStage: ${opt:stage, self:provider.stage}
   base: ${self:service}-${self:custom.myStage}
-  webpack:
-    webpackConfig: "webpack.config.js"
-    packager: "npm"
-    includeModules: true
 
 plugins:
-  - serverless-webpack
+  - serverless-bundle
   - serverless-iam-roles-per-function
 
 functions:

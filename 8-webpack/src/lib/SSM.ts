@@ -1,4 +1,4 @@
-const ssm = require('aws-sdk/clients/ssm');
+import ssm from 'aws-sdk/clients/ssm';
 const SSM = new ssm({region: 'us-east-1'});
 
 export const initSecret = async (parameterStoreName: string, envVarName: string): Promise<string | undefined> => {

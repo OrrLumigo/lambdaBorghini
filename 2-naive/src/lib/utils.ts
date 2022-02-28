@@ -8,7 +8,6 @@ export const appsync = ()=>{
     return AWSAppSyncClient.name
 }
 
-
 export const jimp = ()=>{
     return Jimp.name
 }
