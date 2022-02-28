@@ -14,6 +14,7 @@
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.32",
     "@babel/core": "^7.17.5",
     "@types/node": "^17.0.18",
     "babel-loader": "^8.1.0",

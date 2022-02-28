@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  stage: 7-peomise-all
+  stage: 6-peomise-all
   environment:
     USERS_TABLE: !Ref UsersTable
 
