@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  stage: 4-layers-plugin-split
+  stage: 3-layers-plugin-split
   environment:
     USERS_TABLE: !Ref UsersTable
   package:

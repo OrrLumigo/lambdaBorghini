@@ -8,15 +8,10 @@ provider:
   environment:
     USERS_TABLE: !Ref UsersTable
 
-
 custom:
   region: ${opt:region, self:provider.region}
   myStage: ${opt:stage, self:provider.stage}
   base: ${self:service}-${self:custom.myStage}
-  webpack:
-    webpackConfig: "webpack.config.js"
-    packager: "npm"
-    includeModules: false
   serverless-layers:
     - common:
         dependenciesPath: ./package.json
@@ -28,8 +23,7 @@ custom:
         layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
 
 plugins:
-  - serverless-layers
-  - serverless-webpack
+  - serverless-plugin-typescript
   - serverless-iam-roles-per-function
 
 functions:
@@ -43,6 +37,8 @@ functions:
       - Effect: Allow
         Action: ssm:GetParameter
         Resource: arn:aws:ssm:*
+  do-appsync:
+    handler: src/functions/do-appsync.handler
 
 
 resources:

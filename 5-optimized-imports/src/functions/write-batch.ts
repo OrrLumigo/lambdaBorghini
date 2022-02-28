@@ -8,6 +8,7 @@ export const handler = async (items) => {
         for (const item of items) {
             await DynamoDB.createItem(process.env.USERS_TABLE!,item)
         }
+        console.log("success")
     } else{
         console.log("bad secret")
     }
