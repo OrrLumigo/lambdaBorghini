@@ -23,6 +23,7 @@ custom:
         layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
 
 plugins:
+  - serverless-layers
   - serverless-plugin-typescript
   - serverless-iam-roles-per-function
 

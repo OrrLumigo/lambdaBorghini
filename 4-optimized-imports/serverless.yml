@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  stage: 5-optimized-imports
+  stage: 4-optimized-imports
   environment:
     USERS_TABLE: !Ref UsersTable
 
@@ -24,6 +24,7 @@ custom:
         layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
 
 plugins:
+  - serverless-layers
   - serverless-plugin-typescript
   - serverless-iam-roles-per-function
 

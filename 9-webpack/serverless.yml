@@ -1,10 +1,13 @@
 service: lambdaborghini
 
+package:
+  individually: true
+
 provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  stage: 3-layers-plugin
+  stage: 9-webpack
   environment:
     USERS_TABLE: !Ref UsersTable
 
@@ -13,14 +16,13 @@ custom:
   region: ${opt:region, self:provider.region}
   myStage: ${opt:stage, self:provider.stage}
   base: ${self:service}-${self:custom.myStage}
-  serverless-layers:
-    - common:
-        dependenciesPath: ./package.json
-        layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
+  webpack:
+    webpackConfig: "webpack.config.js"
+    packager: "npm"
+    includeModules: true
 
 plugins:
-  - serverless-layers
-  - serverless-plugin-typescript
+  - serverless-webpack
   - serverless-iam-roles-per-function
 
 functions:

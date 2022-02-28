@@ -1,13 +1,10 @@
 service: lambdaborghini
 
-package:
-  individually: true
-
 provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  stage: 6-webpack
+  stage: 8-dynamo-batch
   environment:
     USERS_TABLE: !Ref UsersTable
 
@@ -16,13 +13,19 @@ custom:
   region: ${opt:region, self:provider.region}
   myStage: ${opt:stage, self:provider.stage}
   base: ${self:service}-${self:custom.myStage}
-  webpack:
-    webpackConfig: "webpack.config.js"
-    packager: "npm"
-    includeModules: true
+  serverless-layers:
+    - common:
+        dependenciesPath: ./package.json
+        layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
+    - appsync:
+        functions:
+          - do-appsync
+        dependenciesPath: /package-appsync.json
+        layersDeploymentBucket: lambdaborghini-10-layers-plugin-layers-plugin
 
 plugins:
-  - serverless-webpack
+  - serverless-layers
+  - serverless-plugin-typescript
   - serverless-iam-roles-per-function
 
 functions:
