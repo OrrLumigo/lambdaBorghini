@@ -3,20 +3,6 @@ service: lambdaborghini
 package:
   individually: true
 
-provider:
-  name: aws
-  runtime: nodejs12.x
-  region: us-east-1
-  stage: 8-webpack
-  environment:
-    USERS_TABLE: !Ref UsersTable
-
-
-custom:
-  region: ${opt:region, self:provider.region}
-  myStage: ${opt:stage, self:provider.stage}
-  base: ${self:service}-${self:custom.myStage}
-
 plugins:
   - serverless-bundle
   - serverless-iam-roles-per-function
